@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 const TabButton = ({ label, isActive = false, url }) => {
   const buttonStyle = isActive
     ? 'bg-red-700 text-white'
-    : 'bg-orange-300 hover:bg-red-700 text-black hover:text-white';
+    : 'bg-orange-300 hover:bg-red-700 text-black hover:text-white'
 
   if (!label) {
-    return null;
+    return null
   }
   return (
     <Link
@@ -18,17 +18,17 @@ const TabButton = ({ label, isActive = false, url }) => {
     >
       {label}
     </Link>
-  );
-};
+  )
+}
 
 TabButton.propTypes = {
   label: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  isActive: PropTypes.bool,
-};
+  isActive: PropTypes.bool
+}
 
 TabButton.defaultProps = {
-  isActive: false,
-};
+  isActive: false
+}
 
-export default TabButton;
+export default memo(TabButton)

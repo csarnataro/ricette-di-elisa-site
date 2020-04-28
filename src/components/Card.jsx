@@ -1,11 +1,11 @@
 /* eslint-disable react/no-danger */
-import React from 'react';
-import PropTypes from 'prop-types';
-import Truncate from 'react-truncate';
-import { Link } from 'react-router-dom';
-import Skeleton from 'react-loading-skeleton';
-import slugify from '../utils/slugify';
-import Tag from './Tag';
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
+import Truncate from 'react-truncate'
+import { Link } from 'react-router-dom'
+import Skeleton from 'react-loading-skeleton'
+import slugify from '../utils/slugify'
+import Tag from './Tag'
 
 const Button = () => {
   return (
@@ -15,13 +15,12 @@ const Button = () => {
     >
       Vai alla ricetta &raquo;
     </span>
-  );
-};
-
+  )
+}
 
 const Card = ({ recipe }) => {
-  const showSkeleton = !recipe.title;
-  const url = `/ricetta/${slugify(recipe.title)}-${recipe.id}`;
+  const showSkeleton = !recipe.title
+  const url = `/ricetta/${slugify(recipe.title)}-${recipe.id}`
   return (
     <Link alt='Vai alla ricetta' to={url}>
       <div className='max-w-sm rounded overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl'>
@@ -81,8 +80,8 @@ const Card = ({ recipe }) => {
         </div>
       </div>
     </Link>
-  );
-};
+  )
+}
 
 Card.propTypes = {
   recipe: PropTypes.shape({
@@ -91,11 +90,11 @@ Card.propTypes = {
     ingredients: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
     process: PropTypes.string,
-    suggestedBy: PropTypes.string,
-  }),
-};
+    suggestedBy: PropTypes.string
+  })
+}
 
 Card.defaultProps = {
-  recipe: {},
-};
-export default Card;
+  recipe: {}
+}
+export default memo(Card)

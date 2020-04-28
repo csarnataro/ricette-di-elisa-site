@@ -1,6 +1,6 @@
 {
-  "name": "ricette-di-elisa-site-react",
-  "version": "0.1.0",
+  "name": "ricette-di-elisa-site",
+  "version": "0.9.0",
   "private": true,
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.2",
