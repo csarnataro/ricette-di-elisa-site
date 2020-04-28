@@ -628,7 +628,7 @@ body {
   min-height: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   body {
     border: 2rem solid #feebc8;
   }

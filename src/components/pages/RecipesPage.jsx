@@ -14,20 +14,16 @@ const RecipesPage = () => {
   const [recipes, setRecipes] = useState(null)
 
   const [mustShowSearchBox, setShowSearchBox] = useState(false)
-  const [searchBoxText, setSearchBoxText] = useState('')
 
   const match = useRouteMatch('/:categoryName')
   const categoryName =
     (match && match.params.categoryName) || 'tutte-le-ricette'
 
   const onClickSearchIcon = () => {
-    if (mustShowSearchBox) {
-      setSearchBoxText('')
-    }
     setShowSearchBox(!mustShowSearchBox)
   }
 
-  const updateRecipes = categoryName => {
+  const fetchRecipesByCategoryName = categoryName => {
     const queryByTag =
       categoryName === 'tutte-le-ricette'
         ? ''
@@ -41,7 +37,18 @@ const RecipesPage = () => {
     )
   }
 
-  const updateCategories = () => {
+  const fetchRecipesByQuery = query => {
+    const queryFormula = `&filterByFormula=(FIND("${query}",LOWER({Name}))>0)`
+
+    const recipesUrl = `https://ricette-di-elisa-api.netlify.app/.netlify/functions/recipes/?sort[0][field]=Name&sort[0][direction]=asc${queryFormula}`
+    fetchFromApi(
+      recipesUrl,
+      processAndUpdateRecipes(setRecipes),
+      json => json.records
+    )
+  }
+
+  const fetchCategories = () => {
     const url =
       'https://ricette-di-elisa-api.netlify.app/.netlify/functions/categories/?sort[0][field]=Name&sort[0][direction]=asc'
 
@@ -61,31 +68,30 @@ const RecipesPage = () => {
   }
 
   useEffect(() => {
-    updateCategories()
+    fetchCategories()
   }, [])
 
   useEffect(() => {
-    updateRecipes(categoryName)
+    fetchRecipesByCategoryName(categoryName)
   }, [categoryName])
-
-  useEffect(() => {
-    setSearchBoxText('')
-  }, [mustShowSearchBox])
 
   return (
     <Layout>
       <CategoriesBar
         categories={categories}
         categoryName={categoryName}
+        isSearchButtonActive={mustShowSearchBox}
         onClickSearchIcon={onClickSearchIcon}
       />
-      {/* 
       <SearchBox
         show={mustShowSearchBox}
-        text={searchBoxText}
-        updateText={setSearchBoxText}
+        submitSearch={value => {
+          fetchRecipesByQuery(value)
+          // console.log(`Should be searching ${value}`)
+          setShowSearchBox(false)
+        }}
+        resetSearch={e => setShowSearchBox(false)}
       />
-      */}
       <RecipesGrid recipes={recipes} />
       <div className='text-center mt-6'>
         <span>Page #{pageNumber}</span>

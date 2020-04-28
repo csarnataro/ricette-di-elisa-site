@@ -3,12 +3,15 @@ import Skeleton from 'react-loading-skeleton'
 import { Magnifier } from './Search'
 import TabButton from './TabButton'
 
-const CategoriesBar = ({ categories, categoryName, onClickSearchIcon }) => (
+const CategoriesBar = ({
+  isSearchButtonActive,
+  categories,
+  categoryName,
+  onClickSearchIcon
+}) => (
   <div className='w-full justify-center flex-wrap my-2 lg:my-6 flex flex-row'>
     <span className='m-1'>
-      {/* 
-      <Magnifier onClick={onClickSearchIcon} />
-      */}
+      <Magnifier onClick={onClickSearchIcon} isActive={isSearchButtonActive} />
 
       <TabButton
         url='/'
