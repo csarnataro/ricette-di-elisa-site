@@ -9,8 +9,8 @@ const getJson = response => response.json()
 
 const identity = a => a
 
-const fetchFromApi = (url, callback, fieldSelector) => {
-  fetch(url)
+const fetchFromApi = (url, fieldSelector, callback) => {
+  return fetch(url)
     .then(checkStatus)
     .then(getJson)
     .then(fieldSelector || identity)

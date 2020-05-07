@@ -11,7 +11,7 @@ function App () {
         <Route path={'/ricetta/:slug'}>
           <RecipePage />
         </Route>
-        <Route path={['/', '/:categoryName']}>
+        <Route path={'/'}>
           <RecipesPage />
         </Route>
       </Switch>

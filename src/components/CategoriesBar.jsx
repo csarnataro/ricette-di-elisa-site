@@ -10,9 +10,11 @@ const CategoriesBar = ({
   onClickSearchIcon
 }) => (
   <div className='w-full justify-center flex-wrap my-2 lg:my-6 flex flex-row'>
-    <span className='m-1'>
+    <span className='my-1'>
       <Magnifier onClick={onClickSearchIcon} isActive={isSearchButtonActive} />
+    </span>
 
+    <span className='m-1'>
       <TabButton
         url='/'
         label='Tutte'

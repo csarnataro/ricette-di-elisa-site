@@ -25,11 +25,12 @@ const processRecipe = recipe => {
  * 
  * @param {function} setRecipes sets the recipes using a hook `useState`
  */
-const processAndUpdateRecipes = setRecipes => records => {
-  const retrievedRecipes = records
+const processAndUpdateRecipes = ({records, offset}) => {
+  const filteredRecords = records
     .filter(filterRecipes)
     .map(processRecipe)
-  setRecipes(retrievedRecipes)
+
+  return {records: filteredRecords, offset}
 }
 
 export default processAndUpdateRecipes

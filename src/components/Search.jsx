@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { Search } from 'react-feather'
 
 const SearchBox = ({ show, submitSearch, resetSearch }) => {
   const [searchText, setSearchText] = useState('')
@@ -47,7 +48,7 @@ const SearchBox = ({ show, submitSearch, resetSearch }) => {
             onClick={e => searchQueryAndSubmit(searchText)}
             className='px-3 pt-1 inline mt-6 mr-4 absolute top-0 right-0'
           >
-            <MagnifierIcon />
+            <Search />
           </button>
         </div>
       </div>
@@ -63,21 +64,11 @@ const Magnifier = ({ isActive, onClick }) => {
     <button
       id='search-toggle'
       onClick={onClick}
-      className={`${className} search-icon cursor-pointer inline mx-3  px-2 py-1 rounded`}
+      className={`${className} h-8 mx-1 px-2 py-1 rounded`}
     >
-      <MagnifierIcon />
+      <Search className='h-4' />
     </button>
   )
 }
-
-const MagnifierIcon = () => (
-  <svg
-    className='fill-current pointer-events-none text-grey-darkest w-4 h-4 inline'
-    xmlns='http://www.w3.org/2000/svg'
-    viewBox='0 0 20 20'
-  >
-    <path d='M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z'></path>
-  </svg>
-)
 
 export { SearchBox, Magnifier }

@@ -1,6 +1,5 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 
 const TabButton = ({ label, isActive = false, url }) => {
   const buttonStyle = isActive
@@ -11,13 +10,12 @@ const TabButton = ({ label, isActive = false, url }) => {
     return null
   }
   return (
-    <Link
+    <button
       to={url}
-      role='button'
       className={`${buttonStyle} px-3 py-1 rounded transition duration-500 ease-in-out transform hover:-translate-y-1 inline-block`}
     >
       {label}
-    </Link>
+    </button>
   )
 }
 
