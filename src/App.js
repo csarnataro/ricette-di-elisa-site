@@ -6,6 +6,7 @@ import './style/style.css'
 
 function App () {
   return (
+    <>
     <HashRouter>
       <Switch>
         <Route path={'/ricetta/:slug'}>
@@ -16,6 +17,7 @@ function App () {
         </Route>
       </Switch>
     </HashRouter>
+    </>
   )
 }
 

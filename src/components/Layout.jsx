@@ -1,18 +1,17 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import PropTypes from 'prop-types'
+import Header from './Header'
 
-const Layout = ({ children }) => {
+const Layout = ({ doSearch, children }) => {
   return (
     <div className='bg-white'>
       <div className='container mx-auto'>
-        <div>
-          <h1 className='w-full py-1 lg:py-10 text-center text-3xl lg:text-6xl'>
-            Le ricette di Elisa
-          </h1>
-        </div>
-        <hr />
+        <Header doSearch={doSearch} />
         <main className='w-full'>{children}</main>
+        <footer className='border-t border-orange-300 py-10 mt-10'>
+          Copyright here
+        </footer>
       </div>
     </div>
   )

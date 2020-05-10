@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 
-const TabButton = ({ label, isActive = false, url }) => {
+const TabButton = ({ label, isActive = false, onClickCategory }) => {
   const buttonStyle = isActive
     ? 'bg-red-700 text-white'
     : 'bg-orange-300 hover:bg-red-700 text-black hover:text-white'
@@ -11,7 +11,7 @@ const TabButton = ({ label, isActive = false, url }) => {
   }
   return (
     <button
-      to={url}
+      onClick={onClickCategory}
       className={`${buttonStyle} px-3 py-1 rounded transition duration-500 ease-in-out transform hover:-translate-y-1 inline-block`}
     >
       {label}
@@ -21,7 +21,6 @@ const TabButton = ({ label, isActive = false, url }) => {
 
 TabButton.propTypes = {
   label: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
   isActive: PropTypes.bool
 }
 

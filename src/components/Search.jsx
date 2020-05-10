@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Search } from 'react-feather'
+import { Search, X } from 'react-feather'
 
 const SearchBox = ({ show, submitSearch, resetSearch }) => {
   const [searchText, setSearchText] = useState('')
@@ -24,13 +24,14 @@ const SearchBox = ({ show, submitSearch, resetSearch }) => {
   useEffect(() => ref.current.focus())
 
   return (
-    <div className={`relative ${show || 'hidden'}`}>
-      <div className='absolute z-50 inset-x-0 pr-0 lg:pr-6'>
-        <div
-          className='relative bg-white shadow-xl border border-solid border-gray-100'
-          id='search-content'
-        >
-          <div className='container relative mx-auto py-4 text-black'>
+    <div
+      className={`absolute transition-all transform ease-in-out duration-500 inset-0 bg-white pt-12 ${
+        show ? '' : 'hidden'
+      }`}
+    >
+      <div className='z-50 pr-0 lg:pr-6'>
+        <div className='relative shadow-xl' id='search-content'>
+          <div className='container rounded-r bg-orange-200 relative mx-auto py-4 text-black'>
             <input
               ref={ref}
               id='searchfield'
@@ -38,15 +39,22 @@ const SearchBox = ({ show, submitSearch, resetSearch }) => {
               onChange={e => setSearchText(e.target.value)}
               type='search'
               onKeyDown={handleKeyDown}
-              placeholder='Cerca ricette...'
+              placeholder='Cosa stai cercando...'
               autoFocus='autofocus'
-              className='inline text-grey-800 min-w-full transition focus:outline-none focus:border-transparent p-2 px-6 pr-16 appearance-none leading-normal text-xl lg:text-2xl'
+              className='bg-orange-200 inline text-grey-800 min-w-full transition focus:outline-none focus:border-transparent p-2 px-6 pr-40 appearance-none leading-normal text-xl lg:text-2xl'
             />
           </div>
           <button
             type='button'
+            onClick={e => setSearchText('')}
+            className={`px-3 pt-1 inline mt-6 mr-24 absolute top-0 right-0`}
+          >
+            <X />
+          </button>
+          <button
+            type='button'
             onClick={e => searchQueryAndSubmit(searchText)}
-            className='px-3 pt-1 inline mt-6 mr-4 absolute top-0 right-0'
+            className='rounded-r inset-y-0 text-white bg-red-700 p-6 inline absolute top-0 right-0'
           >
             <Search />
           </button>

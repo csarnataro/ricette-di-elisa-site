@@ -23,7 +23,7 @@ const Card = ({ recipe }) => {
   const url = `/ricetta/${slugify(recipe.title)}-${recipe.id}`
   return (
     <Link alt='Vai alla ricetta' to={url}>
-      <div className='max-w-sm rounded overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl'>
+      <div className='rounded overflow-hidden shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl'>
         <div className='px-6 pt-4 pb-2 bg-orange-200'>
           <div className='font-bold text-xl mb-2'>
             {showSkeleton ? <Skeleton /> : recipe.title}
@@ -68,7 +68,7 @@ const Card = ({ recipe }) => {
             <Skeleton width={100} height={25} />
           ) : (
             recipe.tags &&
-            recipe.tags.map(tag => <Tag key={tag}>{`#${tag}`}</Tag>)
+            recipe.tags.split(',').map(tag => <Tag key={tag}>{`#${tag}`}</Tag>)
           )}
         </div>
         <div className='px-6 py-4 text-right'>

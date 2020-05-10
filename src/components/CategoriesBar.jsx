@@ -1,33 +1,23 @@
 import React, { memo } from 'react'
 import Skeleton from 'react-loading-skeleton'
-import { Magnifier } from './Search'
 import TabButton from './TabButton'
 
-const CategoriesBar = ({
-  isSearchButtonActive,
-  categories,
-  categoryName,
-  onClickSearchIcon
-}) => (
+const CategoriesBar = ({ categories, categoryName, onClickCategory }) => (
   <div className='w-full justify-center flex-wrap my-2 lg:my-6 flex flex-row'>
-    <span className='my-1'>
-      <Magnifier onClick={onClickSearchIcon} isActive={isSearchButtonActive} />
-    </span>
-
     <span className='m-1'>
       <TabButton
-        url='/'
+        onClickCategory={() => onClickCategory(null)}
         label='Tutte'
-        isActive={categoryName === 'tutte-le-ricette'}
+        isActive={categoryName == null}
       />
     </span>
     {categories
       ? categories.map(category => (
           <span className='m-1' key={category.id}>
             <TabButton
-              url={`/${category.name.toLowerCase()}`}
+              onClickCategory={() => onClickCategory(category.name)}
               label={category.name}
-              isActive={categoryName === category.name.toLowerCase()}
+              isActive={categoryName === category.name}
             />
           </span>
         ))
