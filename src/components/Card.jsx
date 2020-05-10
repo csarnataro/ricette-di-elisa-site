@@ -88,7 +88,7 @@ Card.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string,
     ingredients: PropTypes.string,
-    tags: PropTypes.arrayOf(PropTypes.string),
+    tags: PropTypes.string,
     process: PropTypes.string,
     suggestedBy: PropTypes.string
   })

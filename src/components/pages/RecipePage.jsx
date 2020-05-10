@@ -16,6 +16,7 @@ const RECIPE_QUERY = gql`
       tags
       ingredients
       process
+      suggestedBy
     }
   }
 `

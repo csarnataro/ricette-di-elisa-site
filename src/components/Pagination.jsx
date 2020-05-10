@@ -42,7 +42,7 @@ const Pagination = ({
       </button>
       <div className='inline mx-4'>
         {pages.map((pageNumber, index) => (
-          <>
+          <React.Fragment key={pageNumber}>
             <button
               className={index === currentPage ? 'text-red-600' : ''}
               onClick={() => {
@@ -58,7 +58,7 @@ const Pagination = ({
               {pageNumber + 1}
             </button>
             <span className='mx-2'>{index < pages.length - 1 ? '|' : ''}</span>
-          </>
+          </React.Fragment>
         ))}
       </div>
       <button

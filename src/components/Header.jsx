@@ -4,13 +4,8 @@ import { SearchBox } from './Search'
 
 export default ({ doSearch }) => {
   const [mustShowSearchBox, setShowSearchBox] = useState(false)
-  const [searchBoxText, setSearchBoxText] = useState('')
 
   const onClickSearchIcon = () => {
-    console.log('Clicked search button')
-    if (mustShowSearchBox) {
-      setSearchBoxText('')
-    }
     setShowSearchBox(!mustShowSearchBox)
   }
 

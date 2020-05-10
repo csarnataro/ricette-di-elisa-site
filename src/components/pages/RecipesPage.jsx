@@ -27,6 +27,7 @@ const FEED_QUERY = gql`
         tags
         ingredients
         process
+        suggestedBy
       }
     }
     categories {
@@ -54,15 +55,11 @@ const RecipesPage = () => {
 
   useEffect(() => {
     getData(initialParams)
-    // data.recipes = data.recipes.splice(0, data.recipes.length - 1)
   }, [])
 
   if (loading || !data) return <Loader />
   if (error) return <div>Error: {JSON.stringify(error)}</div>
 
-  // if (data.recipes.length > 20) {
-  //   setShowNextPageLink(true)
-  // }
   const {
     categories,
     recipes: { records, totalCount }
@@ -70,7 +67,6 @@ const RecipesPage = () => {
 
   return (
     <Layout doSearch={searchRecipes}>
-      {/* <div class='loader ease-linear rounded-full inline-block border-8 border-t-8 h-16 w-16'></div> */}
       <CategoriesBar
         onClickCategory={categoryName => {
           setCurrentCategory(categoryName)
