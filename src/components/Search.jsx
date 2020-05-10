@@ -25,13 +25,13 @@ const SearchBox = ({ show, submitSearch, resetSearch }) => {
 
   return (
     <div
-      className={`absolute transition-all transform ease-in-out duration-500 inset-0 bg-white pt-12 ${
+      className={`absolute transition-all transform ease-in-out duration-500 inset-0 bg-white lg:pt-12 ${
         show ? '' : 'hidden'
       }`}
     >
       <div className='z-50 pr-0 lg:pr-6'>
         <div className='relative shadow-xl' id='search-content'>
-          <div className='container rounded-r bg-orange-200 relative mx-auto py-4 text-black'>
+          <div className='container rounded-r bg-orange-200 relative mx-auto lg:py-4 py-1 text-black'>
             <input
               ref={ref}
               id='searchfield'
@@ -41,20 +41,23 @@ const SearchBox = ({ show, submitSearch, resetSearch }) => {
               onKeyDown={handleKeyDown}
               placeholder='Cosa stai cercando...'
               autoFocus='autofocus'
-              className='bg-orange-200 inline text-grey-800 min-w-full transition focus:outline-none focus:border-transparent p-2 px-6 pr-40 appearance-none leading-normal text-xl lg:text-2xl'
+              className='bg-orange-200 inline text-grey-800 min-w-full transition focus:outline-none focus:border-transparent p-2 px-6 lg:pr-40 appearance-none leading-normal text-xl lg:text-2xl'
             />
           </div>
           <button
             type='button'
-            onClick={e => setSearchText('')}
-            className={`px-3 pt-1 inline mt-6 mr-24 absolute top-0 right-0`}
+            onClick={e => {
+              setSearchText('')
+              resetSearch()
+            }}
+            className={`lg:px-3 pt-1 inline mt-3 lg:mt-6 lg:mr-24 mr-16 absolute top-0 right-0`}
           >
             <X />
           </button>
           <button
             type='button'
             onClick={e => searchQueryAndSubmit(searchText)}
-            className='rounded-r inset-y-0 text-white bg-red-700 p-6 inline absolute top-0 right-0'
+            className='rounded-r inset-y-0 text-white bg-red-700 lg:p-6 px-3 inline absolute top-0 right-0'
           >
             <Search />
           </button>
