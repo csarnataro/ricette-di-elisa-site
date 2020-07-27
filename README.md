@@ -1,6 +1,6 @@
 # Ricette di Elisa - Website
 
-Ricette di Elisa (Elisa's recipes) is a list of Italian home recipes created by
+**Ricette di Elisa** *(Elisa's recipes)* is a list of Italian home recipes created by
 Elisa, a 75 years old Italian grandmother, collected in electronic form during
 the last 15 years. Some of the recipes have been suggested by some of her
 friend.
