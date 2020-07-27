@@ -1,4 +1,4 @@
-# Ricette di Elisa - React website
+# Ricette di Elisa - Website
 
 Ricette di Elisa (Elisa's recipes) is a list of Italian home recipes created by
 Elisa, a 75 years old Italian grandmother, collected in electronic form during
@@ -33,6 +33,10 @@ database.
 ## Netlify
 
 This website is hosted on Netlify, using a free starter plan.
+
+## Styling - Tailwind CSS and Postcss
+For the styling work I've been using [Tailwind CSS](https://tailwindcss.com/) and a sprinkle of postcss plugins
+to get an optimized CSS bundle.
 
 ## Limits and quotas
 
