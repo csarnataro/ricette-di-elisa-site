@@ -55,7 +55,7 @@ const RecipesPage = () => {
 
   useEffect(() => {
     getData(initialParams)
-  }, [])
+  }, [getData, initialParams])
 
   if (loading || !data) return <Loader />
   if (error) return <div>Error: {JSON.stringify(error)}</div>
