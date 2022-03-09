@@ -55,7 +55,8 @@ const RecipesPage = () => {
 
   useEffect(() => {
     getData(initialParams)
-  }, [getData, initialParams])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (loading || !data) return <Loader />
   if (error) return <div>Error: {JSON.stringify(error)}</div>
